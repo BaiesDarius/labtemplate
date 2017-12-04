@@ -1,4 +1,6 @@
 # labtemplate
+# Echipa este formata din: Baies Darius-Florin, Cuc Aldrin Dorian, Ilie Gabriel si Busuioc Alexandru
+# Tema aleasa de noi este un magazin de jocuri video
 
 # Setup
 
