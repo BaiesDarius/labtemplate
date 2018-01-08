@@ -23,6 +23,11 @@ import { BaseRequestOptions } from '@angular/http';
 import { LoginComponent } from './components/pages/login/login.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { RouterModule } from '@angular/router';
+import { GameBoxComponent } from './components/layout/gameBox/gameBox.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { StarRatingModule } from 'angular-star-rating';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +36,7 @@ import { RouterModule } from '@angular/router';
     NavbarComponent,
     LoginComponent,
     RegisterComponent,
+    GameBoxComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -41,6 +47,8 @@ import { RouterModule } from '@angular/router';
     HttpModule,
     ReactiveFormsModule,
     SuiModule,
+    NgbModule.forRoot(),
+    StarRatingModule.forRoot(),
   ],
   providers: [
     AppRoutingModule,

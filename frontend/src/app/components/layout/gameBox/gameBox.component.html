@@ -1,0 +1,37 @@
+<div class="container" style="margin-top:30%; margin-top:30%">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="text-align: center"><b>Game Title: {{game.title}}</b></h3>
+        </div>
+
+        <div class="panel-body">
+            <div>
+                <div style="text-align: center">
+                    <span class="glyphicon glyphicon-info-sign"></span> <b>Description: </b>
+                </div>
+                <br>
+                <p>{{game.description}}</p>
+            </div>
+
+            <star-rating-comp style="margin-top:15%"
+                [labelText]="'Community rating: '" 
+                [starType] = "'svg'" 
+                [rating] = "game.rating" 
+                [showHalfStars]="true" 
+                [readOnly]="true">
+            </star-rating-comp>
+
+        </div>
+        <div class="panel-footer">
+            <div style="display:flex; justify-content: space-between">
+                Price: {{game.price}} $
+                <p>
+                    <button type="button" class="btn btn-info btn-sm">
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
+                    </button>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>

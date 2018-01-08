@@ -1,8 +1,7 @@
 .square{
-    border-style:ridge; 
-    margin-left:35%; 
-    margin-right:35%; 
-    text-align:center; 
-    padding:2%; 
-    border-color:#003284;
+    margin: auto;
+    width: 40%;
+    border: 3px solid rgb(14, 0, 77);
+    padding: 10px;
+    text-align: center;
 }

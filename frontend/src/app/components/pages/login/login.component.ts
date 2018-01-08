@@ -3,6 +3,7 @@ import { ApiService } from '../../../service/api.service';
 import { LoginModel } from './models/loginModel';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { GameBoxModel } from '../../layout/gameBox/models/gameBoxModel';
 
 
 @Component({
@@ -18,9 +19,15 @@ export class LoginComponent {
                         email:['', Validators.compose([Validators.required, Validators.email])],
                         password:['', Validators.compose([Validators.required, Validators.minLength(5)])]
                     })
+                    this.game.description= "The game is a MMORPG and other words will be added here.",
+                    this.game.price = 15.4;
+                    this.game.title = "World of Warcraft";
+                    this.game.rating = 4.5;
                 }
 
     Form : FormGroup;
+
+    game:GameBoxModel = new GameBoxModel();
 
     public SubmitLogin(user:LoginModel): void{
         console.log("in");
