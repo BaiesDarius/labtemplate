@@ -29,14 +29,17 @@ export class LoginComponent {
 
     game:GameBoxModel = new GameBoxModel();
 
-    public SubmitLogin(user:LoginModel): void{
-        console.log("in");
-        console.log(user);
-        // this.apiService.post("",user).subscribe(result => {
-        //     if(result.success){
-
-        //     }
-        // })
+    public SubmitLogin(user:LoginModel): void{   
+        this.apiService.post("Login",user).subscribe(result => {
+            if(result.success){
+                console.log(result)
+                this.router.navigate(['/register'])
+            }
+            else
+            {
+                console.log(result)
+            }
+        })
     }
 
     public RedirectToRegister(): void{

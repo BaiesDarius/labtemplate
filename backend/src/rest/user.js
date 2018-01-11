@@ -5,5 +5,6 @@ var user = require('../service/').user;
 router.get('/', user.list);
 router.get('/:id', user.findById);
 router.post('/', user.create);
-
+// router.put('/:id',user.update);
+router.delete('/:id', user.delete);
 module.exports = router;
