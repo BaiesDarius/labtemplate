@@ -51,53 +51,41 @@ app.use('/api/user', user);
 // })
 
 app.get('/', function (req, res) {
-  request("http://localhost:3000/api/user/", function (error, response, body) {
-    if (!error) {
-      var users = JSON.parse(body)
-      for (var key in users) {
-        if (users.hasOwnProperty(key)) {
-          console.log(users[key].id + ": Email:" + users[key].email + " Password:" + users[key].password);
-        }
-      }
-      res.send(body)
-    }
-    else {
-      console.log(error)
-    }
-  })
-})
-
-//TODO: Optimise search on db
-app.post('/Login', function (req, res) {
   var optionsCheck = {
     method: 'GET',
     uri: 'http://localhost:3000/api/user/',
     json: true
   }
   rp(optionsCheck).then(function (users) {
-    var conflict = false;
-    if (users.length < 0) 
-    {
+    for (var key in users) {
+      if (users.hasOwnProperty(key)) {
+        console.log(users[key].id + ": Email:" + users[key].email + " Password:" + users[key].password);
+      }
+    }
+    res.send(users)
+  })
+})
+
+app.post('/Login', function (req, res) {
+  var optionsCheck = {
+    method: 'POST',
+    uri: 'http://localhost:3000/api/user/email',
+    body: req.body,
+    json: true
+  }
+  rp(optionsCheck).then(function (user) {
+    if (user == null) {
       var result = { success: false }
       res.send(result)
     }
-    console.log(req.body)
-    for (var user in users) {
-      if (users.hasOwnProperty(user)) {
-        console.log(users[user].email)
-        console.log(req.body.email)
-        console.log(users[user].password)
-        console.log(req.body.password)
-        if (users[user].email == req.body.email && users[user].password == req.body.password) {
-          var result = { success: true }
-          res.send(result)
-          break;
-        }
-        else {
-          var result = { success: false }
-          res.send(result)
-          break;
-        }
+    else {
+      if (user.email == req.body.email && user.password == req.body.password) {
+        var result = { success: true, id: user.id, firstname: user.firstname, lastname: user.lastname }
+        res.send(result)
+      }
+      else {
+        var result = { success: false }
+        res.send(result)
       }
     }
   })
@@ -106,18 +94,17 @@ app.post('/Login', function (req, res) {
 
 app.post("/register", function (req, res) {
   var optionsCheck = {
-    method: 'GET',
-    uri: 'http://localhost:3000/api/user/',
+    method: 'POST',
+    uri: 'http://localhost:3000/api/user/email',
+    body: req.body,
     json: true
   }
-  rp(optionsCheck).then(function (users) {
+  rp(optionsCheck).then(function (user) {
     var conflict = false;
-    for (var user in users) {
-      if (users.hasOwnProperty(user)) {
-        if (users[user].email == req.body.email) {
-          conflict = true;
-          break;
-        }
+    if (user != null) {
+      if (user.email == req.body.email) {
+        console.log(user.email)
+        conflict = true;
       }
     }
     if (conflict) {
@@ -131,7 +118,6 @@ app.post("/register", function (req, res) {
         email: req.body.email, password: req.body.password,
         firstname: req.body.firstName, lastname: req.body.lastName
       };
-      console.log(jsonDataObj)
       var optionsRegister = {
         method: 'POST',
         uri: 'http://localhost:3000/api/user/',
