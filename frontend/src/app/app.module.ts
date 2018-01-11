@@ -27,6 +27,7 @@ import { GameBoxComponent } from './components/layout/gameBox/gameBox.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { StarRatingModule } from 'angular-star-rating';
+import { GameExplorerComponent } from './components/pages/gameExplorer/gameExplorer.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { StarRatingModule } from 'angular-star-rating';
     LoginComponent,
     RegisterComponent,
     GameBoxComponent,
+    GameExplorerComponent,
   ],
   imports: [
     AppRoutingModule,
