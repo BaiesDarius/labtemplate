@@ -1,5 +1,47 @@
-<div>
+<div class="square">
     <div style="text-align:center">
-        <h1>Welcome to the registration page !</h1>
+        <h1>Welcome to Game-Store !</h1>
+
+        <h3>Please register in order to continue</h3>
+    </div>
+
+    <div class="container-fluid" style="display:flex;margin-top:3%;">
+        <div class="col">
+            <form #form="ngForm" [formGroup]="Form" class="form-horizontal" (ngSubmit)="SubmitRegister(Form.value)">
+
+                <div class="form-group row">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" placeholder="Enter First Name." formControlName="firstName" />
+                </div>
+
+                <div class="form-group row">
+                    <label>Last Name</label>
+                    <input type="text" class="form-control" placeholder="Enter Last Name." formControlName="lastName" />
+                </div>
+
+                <div class="form-group row">
+                    <label>Email</label>
+                    <input type="email" class="form-control" placeholder="Enter Email address." formControlName="email" />
+                    <span style="color:red" *ngIf="Form.hasError('email', 'email') && Form.get('email').touched">Invalid format</span>
+                </div>
+
+                <div class="form-group row">
+                    <label>Password</label>
+                    <input type="password" id="pw1" ng-model="pw1" ng-required="" class="form-control" placeholder="Enter Password." formControlName="password"
+                    />
+                    <span style="color:red" *ngIf="Form.hasError('password', 'password') && Form.get('password').touched">This field is required.</span>
+                </div>
+
+                <div class="form-group row">
+                    <label>Confirm Password</label>
+                    <input type="password" id="pw2" ng-model="pw2" ng-required="" class="form-control" placeholder="Confirm Password." formControlName="confirmPassword"
+                    />
+                    <span style="color:red" *ngIf="Form.hasError('confirmPassword', 'confirmPassword') && Form.get('confirmPassword').touched">This field is required.</span>
+                </div>
+                
+                <button type="submit" class="btn btn-default" [disabled]="Form.invalid">Register</button>
+
+            </form>
+        </div>
     </div>
 </div>
