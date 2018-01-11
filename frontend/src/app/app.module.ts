@@ -27,7 +27,11 @@ import { GameBoxComponent } from './components/layout/gameBox/gameBox.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { StarRatingModule } from 'angular-star-rating';
-import { GameExplorerComponent } from './components/pages/gameExplorer/gameExplorer.component';
+
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { NotificationService } from './service/notificationService';
+import { ShopPageComponent } from './components/pages/shopPage/shopPage.component';
+import { GameExplorerComponent } from './components/layout/gameExplorer/gameExplorer.component';
 
 
 @NgModule({
@@ -39,6 +43,7 @@ import { GameExplorerComponent } from './components/pages/gameExplorer/gameExplo
     RegisterComponent,
     GameBoxComponent,
     GameExplorerComponent,
+    ShopPageComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -51,10 +56,12 @@ import { GameExplorerComponent } from './components/pages/gameExplorer/gameExplo
     SuiModule,
     NgbModule.forRoot(),
     StarRatingModule.forRoot(),
+    ToastModule.forRoot(),
   ],
   providers: [
     AppRoutingModule,
     ApiService,
+    NotificationService,
     // providers used to create fake backend
     // fakeBackendProvider,
     // MockBackend,

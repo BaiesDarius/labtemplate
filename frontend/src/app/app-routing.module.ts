@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent , NavbarComponent, LoginComponent } from './components';
 import { RegisterComponent } from './components/pages/register/register.component';
-import { GameExplorerComponent } from './components/pages/gameExplorer/gameExplorer.component';
+import { ShopPageComponent } from './components/pages/shopPage/shopPage.component';
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
     path:'register', component:RegisterComponent,
   },
   {
-    path:'gameShopPage', component: GameExplorerComponent,
+    path:'gameShopPage', component: ShopPageComponent,
   }
   // otherwise redirect to home
   // { path: '**', redirectTo: '/' }

@@ -1,10 +1,7 @@
 @import "../node_modules/angular-star-rating/assets/scss/star-rating";
 
+@import "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css";
+
 .star-svg{
     margin-top: 10%;
 }
-
-body{
-    padding-top: 40px;
-  }
-  
