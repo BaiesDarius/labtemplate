@@ -32,6 +32,9 @@ import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { NotificationService } from './service/notificationService';
 import { ShopPageComponent } from './components/pages/shopPage/shopPage.component';
 import { GameExplorerComponent } from './components/layout/gameExplorer/gameExplorer.component';
+import { HeaderComponent } from './components/layout/header/header.component';
+import { ShoppingCartComponent } from './components/pages/shoppingCart/shoppingCart.component';
+import { RoutingProtection } from './appRoutingProtection';
 
 
 @NgModule({
@@ -44,6 +47,8 @@ import { GameExplorerComponent } from './components/layout/gameExplorer/gameExpl
     GameBoxComponent,
     GameExplorerComponent,
     ShopPageComponent,
+    ShoppingCartComponent,
+    HeaderComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -62,6 +67,7 @@ import { GameExplorerComponent } from './components/layout/gameExplorer/gameExpl
     AppRoutingModule,
     ApiService,
     NotificationService,
+    RoutingProtection,
     // providers used to create fake backend
     // fakeBackendProvider,
     // MockBackend,

@@ -1,4 +1,4 @@
-export class GameBoxModel{
+export class GameModel{
 
     public title:string;
     public price:number;

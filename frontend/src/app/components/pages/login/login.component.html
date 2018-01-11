@@ -21,7 +21,7 @@
                     <span style="color:red" *ngIf="Form.hasError('password', 'password') && Form.get('password').touched">This field is required.</span>
                 </div>
 
-                <button type="submit" class="btn btn-default" ng-click ="loginsubmit()" [disabled]="Form.invalid">Log in</button>
+                <button type="submit" class="btn btn-default" [disabled]="Form.invalid">Log in</button>
             </form>
 
             <h3>No account? Register below</h3>

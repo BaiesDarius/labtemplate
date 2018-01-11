@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewContainerRef } from '@angular/core';
-import { GameBoxModel } from './models/gameBoxModel';
+import { GameModel } from './models/gameBoxModel';
 import { NotificationService } from '../../../service/notificationService';
 
 @Component({
@@ -15,7 +15,7 @@ export class GameBoxComponent{
         }
 
     @Input()
-    game: GameBoxModel;
+    game: GameModel;
 
     addToCart():void {
         console.log("added");

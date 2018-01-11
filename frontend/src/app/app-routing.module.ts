@@ -4,10 +4,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent , NavbarComponent, LoginComponent } from './components';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { ShopPageComponent } from './components/pages/shopPage/shopPage.component';
+import { ShoppingCartComponent } from './components/pages/shoppingCart/shoppingCart.component';
+import { RoutingProtection } from './appRoutingProtection';
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  {
-    path: 'home', component: HomeComponent
+  { 
+    path: '', redirectTo: 'login', pathMatch: 'full' 
   },
   {
     path:'login',component:LoginComponent,
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
     path:'gameShopPage', component: ShopPageComponent,
+  },
+  {
+    path:'shoppingCart', component: ShoppingCartComponent, canActivate: [RoutingProtection]
   }
   // otherwise redirect to home
   // { path: '**', redirectTo: '/' }

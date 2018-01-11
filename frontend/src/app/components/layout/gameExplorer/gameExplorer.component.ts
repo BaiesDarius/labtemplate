@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { GameBoxModel } from '../../layout/gameBox/models/gameBoxModel';
+import { GameModel } from '../../layout/gameBox/models/gameBoxModel';
 import { NotificationService } from '../../../service/notificationService';
 
 @Component({
@@ -9,11 +9,11 @@ import { NotificationService } from '../../../service/notificationService';
 })
 export class GameExplorerComponent{
 
-    games: Array<GameBoxModel>;
+    games: Array<GameModel>;
 
     constructor() {
 
-        this.games = new Array<GameBoxModel>();
+        this.games = new Array<GameModel>();
 
         this.games.push({
             title:"game0",

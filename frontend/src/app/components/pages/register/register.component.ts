@@ -3,7 +3,7 @@ import { ApiService } from '../../../service/api.service';
 import { RegisterUserModel } from './models/registerModel';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { GameBoxModel } from '../../layout/gameBox/models/gameBoxModel';
+import { GameModel } from '../../layout/gameBox/models/gameBoxModel';
 
 @Component({
     selector: 'register',
@@ -25,10 +25,10 @@ export class RegisterComponent {
     Form : FormGroup;
     public SubmitRegister(user:RegisterUserModel): void{  
         console.log(user)
-        this.apiService.post("Register",user).subscribe(result => {
+        this.apiService.post("register",user).subscribe(result => {
             if(result.success){
                 console.log(result)
-                this.router.navigate(['/register'])
+                this.router.navigate(['/login'])
             }
             else
             {

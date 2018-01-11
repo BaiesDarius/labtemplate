@@ -6,8 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'shopPag',
-    templateUrl: 'shopPage.component.html',
-    styleUrls: ['shopPage.component.css']
+    templateUrl: './shopPage.component.html',
+    styleUrls: ['./shopPage.component.css']
 })
 export class ShopPageComponent implements OnInit, OnDestroy {
 
