@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var helmet = require('helmet')
 var cors = require('cors')
 var request = require('request')
+var rp = require('request-promise')
 
 // Init
 var app = express();
@@ -66,30 +67,84 @@ app.get('/', function (req, res) {
   })
 })
 
-
+//TODO: Optimise search on db
 app.post('/Login', function (req, res) {
-  console.log(req.body)
-  request("http://localhost:3000/api/user/", function (error, response, body) {
-    if (!error) {
-      var users = JSON.parse(body)
-      for (var key in users) {
-        if (users.hasOwnProperty(key)) {
-          if (users[key].email == req.body.email && users[key].password == req.body.password) {
-            console.log("Successfuly logged in")
-            var result = { success: true }
-            res.send(result)
-          }
-          else {
-            var result = { success: false }
-            res.send(result)
-          }
+  var optionsCheck = {
+    method: 'GET',
+    uri: 'http://localhost:3000/api/user/',
+    json: true
+  }
+  rp(optionsCheck).then(function (users) {
+    var conflict = false;
+    if (users.length < 0) 
+    {
+      var result = { success: false }
+      res.send(result)
+    }
+    console.log(req.body)
+    for (var user in users) {
+      if (users.hasOwnProperty(user)) {
+        console.log(users[user].email)
+        console.log(req.body.email)
+        console.log(users[user].password)
+        console.log(req.body.password)
+        if (users[user].email == req.body.email && users[user].password == req.body.password) {
+          var result = { success: true }
+          res.send(result)
+          break;
+        }
+        else {
+          var result = { success: false }
+          res.send(result)
+          break;
         }
       }
-    }
-    else {
-      console.log(error)
     }
   })
 })
 
+
+app.post("/register", function (req, res) {
+  var optionsCheck = {
+    method: 'GET',
+    uri: 'http://localhost:3000/api/user/',
+    json: true
+  }
+  rp(optionsCheck).then(function (users) {
+    var conflict = false;
+    for (var user in users) {
+      if (users.hasOwnProperty(user)) {
+        if (users[user].email == req.body.email) {
+          conflict = true;
+          break;
+        }
+      }
+    }
+    if (conflict) {
+      console.log("User already exists")
+      var result = { success: false }
+      res.send(result)
+    }
+    else {
+      console.log("Registering...")
+      var jsonDataObj = {
+        email: req.body.email, password: req.body.password,
+        firstname: req.body.firstName, lastname: req.body.lastName
+      };
+      console.log(jsonDataObj)
+      var optionsRegister = {
+        method: 'POST',
+        uri: 'http://localhost:3000/api/user/',
+        body: jsonDataObj,
+        json: true
+      }
+      rp(optionsRegister).then(function (parsedBody) {
+        console.log("Success!")
+        var result = { success: true }
+        res.send(result)
+      })
+    }
+  })
+
+})
 module.exports = app;
