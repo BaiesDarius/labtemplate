@@ -11,6 +11,7 @@ export class AdminPageComponent implements OnInit {
     title: FormControl;
     description: FormControl;
     price: FormControl;
+    rating: FormControl;
 
     image64: string;
 
@@ -18,6 +19,7 @@ export class AdminPageComponent implements OnInit {
         this.title = new FormControl('', Validators.compose([Validators.required]));
         this.description = new FormControl('', Validators.compose([Validators.required]));
         this.price = new FormControl('', Validators.compose([Validators.required]));
+        this.rating = new FormControl('', Validators.compose([Validators.required, Validators.min(1), Validators.max(5)]));
     }
 
 
@@ -39,9 +41,10 @@ export class AdminPageComponent implements OnInit {
             title: this.title.value,
             description: this.description.value,
             price: this.price.value,
+            rating: this.rating.value,
             image: this.image64,
         };
-      }
+    }
 
     ngOnInit() { }
 }

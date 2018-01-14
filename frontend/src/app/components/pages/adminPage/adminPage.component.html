@@ -16,6 +16,11 @@
             <input matInput type="number" matTextareaAutosize matInput placeholder="Price (number)" [formControl]="price">
             <mat-error *ngIf="price.invalid">Insert number.</mat-error>
         </mat-form-field>
+
+        <mat-form-field style="width:50%">
+            <input matInput type="number" matTextareaAutosize matInput placeholder="Rating (1-5)" [formControl]="rating">
+            <mat-error *ngIf="rating.invalid">Insert number from 1-5.</mat-error>
+        </mat-form-field>
         <br>
 
         <div style="text-align:center; justify-content: center">
