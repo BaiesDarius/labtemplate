@@ -25,6 +25,7 @@ export class GamesTableComponent implements OnInit {
             description:"description",
             price : 4,
             rating : 1,
+            isWishlisted: true
         });
         this.games.push({
             id:2,
@@ -32,6 +33,7 @@ export class GamesTableComponent implements OnInit {
             description:"description",
             price : 4,
             rating : 0.4,
+            isWishlisted: false,
         });
         this.games.push({
             id:3,
@@ -39,6 +41,7 @@ export class GamesTableComponent implements OnInit {
             description:"description",
             price : 4,
             rating : 5,
+            isWishlisted: true
         });
         this.games.push({
             id:3,
@@ -46,6 +49,7 @@ export class GamesTableComponent implements OnInit {
             description:"description",
             price : 4,
             rating : 3.4,
+            isWishlisted: false,
         });
 
         

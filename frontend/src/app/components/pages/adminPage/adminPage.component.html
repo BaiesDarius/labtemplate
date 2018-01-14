@@ -1,0 +1,32 @@
+<div class="well square">
+    <form (ngSubmit)="upload()">
+        <mat-form-field style="width:50%">
+            <input matTextareaAutosize matInput placeholder="Title" [formControl]="title">
+            <mat-error *ngIf="title.invalid">This field is required.</mat-error>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field style="width:50%">
+            <input matTextareaAutosize matInput placeholder="Description" [formControl]="description">
+            <mat-error *ngIf="description.invalid">This field is required.</mat-error>
+        </mat-form-field>
+        <br>
+
+        <mat-form-field style="width:50%">
+            <input matInput type="number" matTextareaAutosize matInput placeholder="Price (number)" [formControl]="price">
+            <mat-error *ngIf="price.invalid">Insert number.</mat-error>
+        </mat-form-field>
+        <br>
+
+        <div style="text-align:center; justify-content: center">
+            <input type="file" #fileInput placeholder="Upload file..." (change)="onFileChange($event)" />
+        </div>
+        <br>
+
+        <br>
+        <button type="submit" mat-raised-button color="primary">
+            Add game
+            <i class="material-icons">done</i>
+        </button>
+    </form>
+</div>

@@ -7,10 +7,11 @@
         </h1>
     </div>
     <div style="display:flex; justify-content: space-between; margin-top: 1%;">
-        <a href="\login" class="btn btn-danger btn-lg">
-            <span class="glyphicon glyphicon-log-out"></span> Log out
-        </a>
-        <button type="button" class="btn btn-info btn-sm" (click) = "goToShoppingCart()">
+        <button type="submit" mat-raised-button color="warn" (click)="logOut()">
+            Log Out
+            <i class="material-icons">cancel</i>
+        </button>
+        <button type="button" class="btn btn-info btn-sm" (click)="goToShoppingCart()">
             <span class="glyphicon glyphicon-shopping-cart"></span> Go To Shopping Cart
         </button>
     </div>

@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/pages/register/register.componen
 import { ShopPageComponent } from './components/pages/shopPage/shopPage.component';
 import { RoutingProtection } from './appRoutingProtection';
 import { ShoppingCartPageComponent } from './components/pages/shoppingCartPage/shoppingCartPage.component';
+import { LoggedPageComponent } from './components/pages/loggedPage/loggedPage.component';
 const routes: Routes = [
   { 
     path: '', redirectTo: 'login', pathMatch: 'full' 
@@ -17,7 +18,7 @@ const routes: Routes = [
     path:'register', component:RegisterComponent,
   },
   {
-    path:'gameShopPage', component: ShopPageComponent, canActivate: [RoutingProtection]
+    path: 'logged', component: LoggedPageComponent, canActivate: [RoutingProtection],
   },
   {
     path:'shoppingCart', component: ShoppingCartPageComponent, canActivate: [RoutingProtection]

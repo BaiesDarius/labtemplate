@@ -30,7 +30,7 @@ export class ShoppingCartPageComponent {
     }
 
     public backToShop(): void {
-        this.router.navigate(['/gameShopPage']);
+        this.router.navigate(['/logged']);
     }
 
     public logOut(): void {

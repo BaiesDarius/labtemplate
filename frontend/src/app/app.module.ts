@@ -45,6 +45,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { LoggedPageComponent } from './components/pages/loggedPage/loggedPage.component';
+import { AdminPageComponent } from './components/pages/adminPage/adminPage.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     GamesTableComponent,
     ShoppingCartPageComponent,
     HeaderComponent,
+    LoggedPageComponent,
+    AdminPageComponent,
   ],
   imports: [
     AppRoutingModule,

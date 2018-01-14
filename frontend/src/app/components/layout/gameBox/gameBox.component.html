@@ -1,23 +1,23 @@
-<div class="box foo" style="margin-top:30%;">
+<div class="box" style="margin-top:30%;">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title" style="text-align: center"><b>Game Title: {{game.title}}</b></h3>
+            <h3 class="panel-title" style="text-align: center">
+                <b>Game Title: {{game.title}}</b>
+            </h3>
         </div>
 
         <div class="panel-body">
             <div>
+                <img [src]="this.image" class="img-thumbnail">
                 <div style="text-align: center">
-                    <span class="glyphicon glyphicon-info-sign"></span> <b>Description: </b>
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                    <b>Description: </b>
                 </div>
                 <br>
                 <p style="text-align: center">{{game.description}}</p>
             </div>
 
-            <star-rating-comp style="margin-top:15%"
-                [labelText]="'Community rating: '" 
-                [starType] = "'svg'" 
-                [rating] = "game.rating" 
-                [showHalfStars]="true" 
+            <star-rating-comp style="margin-top:15%" [labelText]="'Community rating: '" [starType]="'svg'" [rating]="game.rating" [showHalfStars]="true"
                 [readOnly]="true">
             </star-rating-comp>
 
@@ -25,11 +25,30 @@
         <div class="panel-footer">
             <div style="display:flex; justify-content: space-between">
                 Price: {{game.price}} $
-                <p>
+                <div style="display: flex; flex-direction: column; justify-content: center;">
                     <button (click)="this.addToCart()" type="button" class="btn btn-info btn-sm">
                         <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
                     </button>
-                </p>
+
+                    <div style="width:150px">
+                        <ng-container *ngIf="this.game.isWishlisted; else elseTemplate">
+                            <div>
+                                <button mat-icon-button color="warn" (click)="toggleWishlist()">
+                                    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+                                </button>
+                                Game wishlisted
+                            </div>
+                        </ng-container>
+                        <ng-template #elseTemplate>
+                            <div>
+                                <button mat-icon-button (click)="toggleWishlist()">
+                                    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+                                </button>
+                                Add to wishlist
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
             </div>
         </div>
 

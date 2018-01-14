@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Cookie } from 'ng2-cookies/ng2-cookies';
 
 @Component({
     selector: 'app-header',
@@ -12,6 +13,13 @@ export class HeaderComponent implements OnInit {
     ngOnInit() { }
 
     goToShoppingCart(): void{
+        
         this.router.navigate(["/shoppingCart"]);
+    }
+
+    logOut(): void{
+
+        Cookie.deleteAll();
+        this.router.navigate(['/login']);
     }
 }

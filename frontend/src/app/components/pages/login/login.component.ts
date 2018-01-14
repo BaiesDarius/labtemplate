@@ -36,12 +36,10 @@ export class LoginComponent {
 
         this.apiService.post("Login", user).subscribe(result => {
             if (result.success) {
-                console.log(result);
                 Cookie.set("Id", result.id);
-                this.router.navigate(['/gameShopPage'], { queryParams: { showLogIn: true, firstName: result.firstname } });
+                this.router.navigate(['/logged'], { skipLocationChange: true, queryParams: { showLogIn: true, firstName: result.firstname} });
             }
             else {
-                console.log(result);
                 this.notificator.onFail('Invalid Creditentials.');
             }
         })

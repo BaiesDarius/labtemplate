@@ -5,32 +5,12 @@ import { NotificationService } from '../../../service/notificationService';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-    selector: 'shopPag',
+    selector: 'shopPage',
     templateUrl: './shopPage.component.html',
     styleUrls: ['./shopPage.component.css']
 })
-export class ShopPageComponent implements OnInit, OnDestroy {
+export class ShopPageComponent {
 
-    private subscription: Subscription;
-
-    ngOnInit(): void {
-        this.subscription = this.route.queryParams.subscribe(params => {
-
-            if (params['showLogIn']) {
-                this.notificationService.onSuccess("Welcome, " + params['firstName'] + " !");
-            }
-        });
-    }
-
-    ngOnDestroy(): void {
-
-        this.subscription.unsubscribe();
-    }
-
-    constructor(public vRef: ViewContainerRef,
-        public notificationService: NotificationService,
-        private route: ActivatedRoute, ) {
-
-        this.notificationService.setViewContainerReference(vRef);
+    constructor() {
     }
 }

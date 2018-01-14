@@ -22,6 +22,7 @@ export class GameExplorerComponent {
             description: "description",
             price: 4,
             rating: 1,
+            isWishlisted: true,
         });
         this.games.push({
             id: 3,
@@ -29,6 +30,7 @@ export class GameExplorerComponent {
             description: "description",
             price: 4,
             rating: 0.4,
+            isWishlisted: true
         });
         this.games.push({
             id: 3,
@@ -36,6 +38,7 @@ export class GameExplorerComponent {
             description: "description",
             price: 4,
             rating: 5,
+            isWishlisted: false
         });
         this.games.push({
             id: 3,
@@ -43,6 +46,7 @@ export class GameExplorerComponent {
             description: "description",
             price: 4,
             rating: 3.4,
+            isWishlisted: false
         });
         this.games.push({
             id: 3,
@@ -50,6 +54,7 @@ export class GameExplorerComponent {
             description: "description",
             price: 4,
             rating: 1.2,
+            isWishlisted: true
         });
         this.games.push({
             id: 3,
@@ -57,6 +62,7 @@ export class GameExplorerComponent {
             description: "description",
             price: 4,
             rating: 4,
+            isWishlisted: true
         });
         this.games.push({
             id: 3,
@@ -64,6 +70,7 @@ export class GameExplorerComponent {
             description: "description",
             price: 4.5,
             rating: 3,
+            isWishlisted: true
         });
 
         this.games.push({
@@ -72,6 +79,7 @@ export class GameExplorerComponent {
             description: "description",
             price: 5,
             rating: 3,
+            isWishlisted: true
         });
     }
 }

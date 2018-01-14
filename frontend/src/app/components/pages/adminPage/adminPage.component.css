@@ -1,0 +1,7 @@
+.square{
+    margin: auto;
+    width: 40%;
+    border: 3px solid rgb(14, 0, 77);
+    padding: 10px;
+    text-align: center;
+}
