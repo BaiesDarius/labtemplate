@@ -18,8 +18,8 @@ export class RegisterComponent {
                 email:['', Validators.compose([Validators.required, Validators.email])],
                 password:['', Validators.compose([Validators.required, Validators.minLength(5)])],
                 confirmPassword:['', Validators.compose([Validators.required, Validators.minLength(5)])],
-                firstName:['', Validators.compose([Validators.required, Validators.minLength(5)])],
-                lastName:['', Validators.compose([Validators.required, Validators.minLength(5)])]
+                firstName:['', Validators.compose([Validators.required, Validators.minLength(2)])],
+                lastName:['', Validators.compose([Validators.required, Validators.minLength(2)])]
         })
     }
     Form : FormGroup;

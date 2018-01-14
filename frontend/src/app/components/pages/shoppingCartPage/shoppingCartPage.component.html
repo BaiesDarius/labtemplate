@@ -1,0 +1,46 @@
+<div class="well">
+    <div>
+        <h1 style="text-align: center">
+            <b>
+                Welcome to the Game-Shop!
+            </b>
+        </h1>
+    </div>
+    <div style="display:flex; justify-content: space-between; margin-top: 1%;">
+        <a href="\login" class="btn btn-danger btn-lg">
+            <span class="glyphicon glyphicon-log-out"></span> Log out
+        </a>
+        <div>
+            <button type="submit" mat-raised-button color="primary" (click)="backToShop()">
+                Back to shopping
+                <i class="material-icons">shop</i>
+            </button>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top:5%" class="square">
+    <gamesTable></gamesTable>
+</div>
+
+
+<div class="square" style="text-align:center; margin-top:2%">
+    <mat-card>
+        <form (ngSubmit)="placeOrder()">
+            <mat-form-field style="width:50%">
+                <input matTextareaAutosize matInput placeholder="Address" [formControl]="address">
+                <mat-error *ngIf="address.invalid">This field is required.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field style="width:50%">
+                <input matTextareaAutosize matInput placeholder="Contact Name" [formControl]="contactName">
+                <mat-error *ngIf="contactName.invalid">This field is required.</mat-error>
+            </mat-form-field>
+            <br>
+            <button type="submit" mat-raised-button color="primary">
+                Place order
+                <i class="material-icons">done</i>
+            </button>
+        </form>
+    </mat-card>
+</div>

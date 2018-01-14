@@ -14,12 +14,10 @@ export class NotificationService {
     }
 
     onSuccess(message : string) {
-        this.toastr.clearAllToasts();
         this.toastr.success(message);
     }
 
     onFail(message : string) {
-        this.toastr.clearAllToasts();
         this.toastr.error(message);
     }
 

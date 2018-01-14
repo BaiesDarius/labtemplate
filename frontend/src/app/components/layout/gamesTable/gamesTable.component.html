@@ -1,0 +1,32 @@
+<div class="example-container mat-elevation-z8">
+    <mat-toolbar>
+        <div style="text-align: center">Games in Cart</div>
+    </mat-toolbar>
+    <mat-table [dataSource]="myDataSource">
+
+        <ng-container matColumnDef="Selected">
+            <mat-header-cell *matHeaderCellDef>
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element" style="text-align: center">
+                <button mat-raised-button color="warn" (click)="deleteGame(element)">Delete
+                    <mat-icon class="example-icon">delete</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Game">
+            <mat-header-cell *matHeaderCellDef> Game </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="Price">
+            <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns;">
+        </mat-row>
+
+    </mat-table>
+</div>

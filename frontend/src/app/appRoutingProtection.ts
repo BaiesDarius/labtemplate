@@ -13,7 +13,7 @@ export class RoutingProtection implements CanActivate{
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
 
         var id = Cookie.get("Id");
-        var canNavigate = isNumber(id);
+        var canNavigate = isNumber(parseFloat(id));
 
         if(!canNavigate)
             this.router.navigate(['/login']);

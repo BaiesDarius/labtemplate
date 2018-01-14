@@ -33,9 +33,18 @@ import { NotificationService } from './service/notificationService';
 import { ShopPageComponent } from './components/pages/shopPage/shopPage.component';
 import { GameExplorerComponent } from './components/layout/gameExplorer/gameExplorer.component';
 import { HeaderComponent } from './components/layout/header/header.component';
-import { ShoppingCartComponent } from './components/pages/shoppingCart/shoppingCart.component';
 import { RoutingProtection } from './appRoutingProtection';
 
+import {MatTableModule} from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+import { GamesTableComponent } from './components/layout/gamesTable/gamesTable.component';
+import { ShoppingCartPageComponent } from './components/pages/shoppingCartPage/shoppingCartPage.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -47,7 +56,8 @@ import { RoutingProtection } from './appRoutingProtection';
     GameBoxComponent,
     GameExplorerComponent,
     ShopPageComponent,
-    ShoppingCartComponent,
+    GamesTableComponent,
+    ShoppingCartPageComponent,
     HeaderComponent,
   ],
   imports: [
@@ -62,6 +72,14 @@ import { RoutingProtection } from './appRoutingProtection';
     NgbModule.forRoot(),
     StarRatingModule.forRoot(),
     ToastModule.forRoot(),
+    MatTableModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [
     AppRoutingModule,
