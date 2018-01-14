@@ -2,7 +2,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from "@angular/core";
 import { Cookie } from 'ng2-cookies/ng2-cookies';
-import { isNumber } from "util";
+import { isNumber, isNullOrUndefined } from "util";
 
 
 @Injectable()
@@ -13,7 +13,8 @@ export class RoutingProtection implements CanActivate{
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
 
         var id = Cookie.get("Id");
-        var canNavigate = isNumber(parseFloat(id));
+        var canNavigate = !isNullOrUndefined(id);
+        console.log(canNavigate);
 
         if(!canNavigate)
             this.router.navigate(['/login']);

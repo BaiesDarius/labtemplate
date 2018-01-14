@@ -17,7 +17,7 @@ export class ShopPageComponent implements OnInit, OnDestroy {
         this.subscription = this.route.queryParams.subscribe(params => {
 
             if (params['showLogIn']) {
-                this.notificationService.onSuccess("Log in successful. Welcome");
+                this.notificationService.onSuccess("Welcome, " + params['firstName'] + " !");
             }
         });
     }
@@ -29,8 +29,8 @@ export class ShopPageComponent implements OnInit, OnDestroy {
 
     constructor(public vRef: ViewContainerRef,
         public notificationService: NotificationService,
-        private route: ActivatedRoute,) {
-        this.notificationService.setViewContainerReference(vRef);
+        private route: ActivatedRoute, ) {
 
+        this.notificationService.setViewContainerReference(vRef);
     }
 }

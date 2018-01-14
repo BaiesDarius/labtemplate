@@ -2,13 +2,14 @@ import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { NotificationService } from '../../../service/notificationService';
 import { Router } from '@angular/router';
+import { Cookie } from 'ng2-cookies/src/services/cookie';
 
 @Component({
     selector: 'shoppingCartPage-name',
     templateUrl: './shoppingCartPage.component.html',
     styleUrls: ['./shoppingCartPage.component.css']
 })
-export class ShoppingCartPageComponent implements OnInit {
+export class ShoppingCartPageComponent {
 
     constructor(private formBuilder: FormBuilder,
         private notificator: NotificationService,
@@ -24,18 +25,6 @@ export class ShoppingCartPageComponent implements OnInit {
     address: FormControl;
     contactName: FormControl;
 
-    public placeOrder(): void {
-        if (this.fieldsAreValid()) {
-            this.notificator.onSuccess("Order placed");
-            setTimeout(() => {
-                window.location.reload();
-            }, 1000);
-        }
-        else {
-            this.notificator.onFail("Invalid input informations.");
-        }
-    }
-
     private fieldsAreValid(): boolean {
         return (this.address.valid && this.contactName.valid);
     }
@@ -44,5 +33,23 @@ export class ShoppingCartPageComponent implements OnInit {
         this.router.navigate(['/gameShopPage']);
     }
 
-    ngOnInit() { }
+    public logOut(): void {
+        Cookie.deleteAll();
+        this.router.navigate(['/login']);
+    }
+
+    placeOrder(): void {
+
+        if (this.fieldsAreValid()) {
+
+            this.notificator.onSuccess("Order placed");
+            setTimeout(() => {
+                this.backToShop();
+            }, 1000);
+        }
+        else {
+            this.notificator.onFail("Invalid input informations.");
+            return;
+        }
+    }
 }

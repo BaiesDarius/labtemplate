@@ -1,0 +1,13 @@
+.box {
+    transition: 0.5s;
+    -webkit-transition:0.5s;
+    border: 2px solid rgba(255, 255, 255, 0);
+  }
+  
+  .box:hover {
+    outline: 2px solid rgb(22, 96, 255);
+  }
+  
+  .box::before, .box::after {
+    transition: 0.5s;
+  }

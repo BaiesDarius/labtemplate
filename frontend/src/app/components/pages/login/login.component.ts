@@ -38,7 +38,7 @@ export class LoginComponent {
             if (result.success) {
                 console.log(result);
                 Cookie.set("Id", result.id);
-                this.router.navigate(['/gameShopPage'], { queryParams: { showLogIn: true } });
+                this.router.navigate(['/gameShopPage'], { queryParams: { showLogIn: true, firstName: result.firstname } });
             }
             else {
                 console.log(result);
