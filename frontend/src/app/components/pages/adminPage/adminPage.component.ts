@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';import { ApiService } from '../../../service/api.service';
+import { NotificationService } from '../../../service/notificationService';
+import { Router } from '@angular/router';
+import { Cookie } from 'ng2-cookies/src/services/cookie';
 ;
 
 @Component({
@@ -16,11 +19,16 @@ export class AdminPageComponent implements OnInit {
 
     image64: string;
 
-    constructor(private apiService : ApiService) {
+    constructor(private apiService : ApiService,
+                private notificator: NotificationService,
+                private vcr: ViewContainerRef,
+                private navigator:Router) {
         this.title = new FormControl('', Validators.compose([Validators.required]));
         this.description = new FormControl('', Validators.compose([Validators.required]));
         this.price = new FormControl('', Validators.compose([Validators.required]));
         this.rating = new FormControl('', Validators.compose([Validators.required, Validators.min(1), Validators.max(5)]));
+
+        this.notificator.setViewContainerReference(this.vcr);
     }
 
 
@@ -53,7 +61,13 @@ export class AdminPageComponent implements OnInit {
                 console.log(result);
             }
         })
+        this.notificator.onSuccess("Game added successfully.");
 
+    }
+
+    logOut(): void{
+        Cookie.deleteAll();
+        this.navigator.navigate(['login']);
     }
 
     ngOnInit() { }

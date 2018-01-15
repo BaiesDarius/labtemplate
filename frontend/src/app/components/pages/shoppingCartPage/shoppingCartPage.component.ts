@@ -43,6 +43,7 @@ export class ShoppingCartPageComponent {
         if (this.fieldsAreValid()) {
 
             this.notificator.onSuccess("Order placed");
+            
             setTimeout(() => {
                 this.backToShop();
             }, 1000);
