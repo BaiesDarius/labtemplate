@@ -7,7 +7,17 @@ exports.list = function (req, res) {
     res.jsonp(carts);
   }).catch((error) => res.status(400).send(error));
 };
-
+exports.getByUserId = function(req,res){
+  cart.findAll({attributes:['id','iduser','idgame']},
+  {where: {iduser:req.body.iduser}}).then(found=>{
+    res.jsonp(found)
+  }).catch((error) => res.status(400).send(error));
+}
+exports.findByUserAndGameId = function(req,res){
+  cart.findOne({where:{iduser:req.body.iduser,idgame:req.body.idgame}
+  }).then(found=>{res.jsonp(found)
+  }).catch((error)=>{console.log("smth")});
+}
 exports.create = function (req, res) {
   cart.create(
     { iduser: `${req.body.iduser}`, idgame: `${req.body.idgame}`},

@@ -18,6 +18,8 @@
     "nodemon": "^1.12.1",
     "pg": "^7.3.0",
     "pg-hstore": "^2.3.2",
+    "promise": "^8.0.1",
+    "promise-loop": "^1.0.1",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
     "sequelize": "^4.31.2",

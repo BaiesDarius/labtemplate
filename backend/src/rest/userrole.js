@@ -5,5 +5,6 @@ var userrole = require('../service/').userrole
 router.get('/', userrole.list);
 router.get('/:id', userrole.findById);
 router.post('/', userrole.create);
+router.post('/getByUserId',userrole.getByUserId)
 router.delete('/:id', userrole.delete);
 module.exports = router;

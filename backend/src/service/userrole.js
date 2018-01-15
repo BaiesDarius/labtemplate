@@ -10,11 +10,17 @@ exports.list = function (req, res) {
 
 exports.create = function (req, res) {
   userrole.create(
-    { iduser: `${req.body.iduser}`, role: `${req.body.role}`},
-    { fields: ['iduser', 'role']})
+    { iduser: req.body.iduser, role: `${req.body.role}`}, { fields: ['iduser', 'role']})
   res.jsonp(req.body)
 };
 
+exports.getByUserId = function(req,res){
+  console.log(req.body.id)
+  userrole.findOne({where: {iduser:req.body.id}}).then(found=>{
+    res.jsonp(found)
+  }).catch((error) => res.status(400).send(error));
+  
+}
 exports.findById = function (req, res) {
   let id = req.params.id;
   userrole.findById(id, { attributes: ['id', 'iduser', 'role'] }).then(userrole => {

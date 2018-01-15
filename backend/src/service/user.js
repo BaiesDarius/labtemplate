@@ -13,7 +13,13 @@ exports.findByEmail = function (req, res) {
     res.jsonp(users);
   }).catch((error) => res.status(400).send(error));
 }
-
+exports.getLast = function (req,res){
+  user.findOne({
+    order: [
+      ['id', 'DESC'],
+    ]
+  }).then(found=>{res.jsonp(found)})
+}
 exports.create = function (req, res) {
   user.create(
     { email: `${req.body.email}`, password: `${req.body.password}`, firstname: `${req.body.firstname}`, lastname: `${req.body.lastname}` },

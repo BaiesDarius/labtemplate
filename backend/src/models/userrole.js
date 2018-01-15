@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     iduser: DataTypes.INTEGER,
     role: DataTypes.STRING
   }, {
+    timestamps:false,
     classMethods: {
       associate: function(models) {
         // associations can be defined here

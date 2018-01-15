@@ -4,8 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     price: DataTypes.FLOAT,
     description: DataTypes.STRING,
-    rating: DataTypes.INTEGER
+    rating: DataTypes.FLOAT
   }, {
+    timestamps:false,
     classMethods: {
       associate: function(models) {
         // associations can be defined here

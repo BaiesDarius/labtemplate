@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';import { ApiService } from '../../../service/api.service';
+;
 
 @Component({
     selector: 'adminPage',
@@ -15,7 +16,7 @@ export class AdminPageComponent implements OnInit {
 
     image64: string;
 
-    constructor() {
+    constructor(private apiService : ApiService) {
         this.title = new FormControl('', Validators.compose([Validators.required]));
         this.description = new FormControl('', Validators.compose([Validators.required]));
         this.price = new FormControl('', Validators.compose([Validators.required]));
@@ -44,6 +45,15 @@ export class AdminPageComponent implements OnInit {
             rating: this.rating.value,
             image: this.image64,
         };
+        this.apiService.post("AdminCreate",game).subscribe(result => {
+            if (result.success) {
+                console.log(result);
+            }
+            else {
+                console.log(result);
+            }
+        })
+
     }
 
     ngOnInit() { }

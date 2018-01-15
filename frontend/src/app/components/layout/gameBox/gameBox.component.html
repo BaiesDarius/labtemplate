@@ -8,7 +8,6 @@
 
         <div class="panel-body">
             <div>
-                <img [src]="this.image" class="img-thumbnail">
                 <div style="text-align: center">
                     <span class="glyphicon glyphicon-info-sign"></span>
                     <b>Description: </b>
@@ -28,26 +27,7 @@
                 <div style="display: flex; flex-direction: column; justify-content: center;">
                     <button (click)="this.addToCart()" type="button" class="btn btn-info btn-sm">
                         <span class="glyphicon glyphicon-shopping-cart"></span> Add to cart
-                    </button>
-
-                    <div style="width:150px">
-                        <ng-container *ngIf="this.game.isWishlisted; else elseTemplate">
-                            <div>
-                                <button mat-icon-button color="warn" (click)="toggleWishlist()">
-                                    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-                                </button>
-                                Game wishlisted
-                            </div>
-                        </ng-container>
-                        <ng-template #elseTemplate>
-                            <div>
-                                <button mat-icon-button (click)="toggleWishlist()">
-                                    <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
-                                </button>
-                                Add to wishlist
-                            </div>
-                        </ng-template>
-                    </div>
+                    </button>                   
                 </div>
             </div>
         </div>

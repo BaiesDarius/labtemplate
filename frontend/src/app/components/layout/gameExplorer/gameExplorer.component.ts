@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { GameModel } from '../../layout/gameBox/models/gameBoxModel';
 import { NotificationService } from '../../../service/notificationService';
+import { ApiService } from '../../../service/api.service';
+import { Cookie } from 'ng2-cookies/src/services';
 
 
 @Component({
@@ -12,74 +14,35 @@ export class GameExplorerComponent {
 
     games: Array<GameModel>;
 
-    constructor() {
+    constructor(private apiService:ApiService) {
 
         this.games = new Array<GameModel>();
+        var userid = Cookie.get("Id")
+        var datasent = {
+            id:userid
+        }
+        this.apiService.post("AllGames",datasent).subscribe(result => {
+            if (result.success) {
+                console.log(result);
+                for(var game in result.games)
+                {
+                    if(result.games.hasOwnProperty(game))
+                    {
+                        this.games.push({
+                            id: result.games[game].id as number,
+                            title: result.games[game].title as string,
+                            price: result.games[game].price as number,
+                            description: result.games[game].description as string,
+                            rating: result.games[game].rating as number
+                            });
+                    }
+                }
+            }
+            else {
+                console.log(result);
+            }
+        })
 
-        this.games.push({
-            id: 3,
-            title: "game0",
-            description: "description",
-            price: 4,
-            rating: 1,
-            isWishlisted: true,
-        });
-        this.games.push({
-            id: 3,
-            title: "game1",
-            description: "description",
-            price: 4,
-            rating: 0.4,
-            isWishlisted: true
-        });
-        this.games.push({
-            id: 3,
-            title: "game2",
-            description: "description",
-            price: 4,
-            rating: 5,
-            isWishlisted: false
-        });
-        this.games.push({
-            id: 3,
-            title: "game3",
-            description: "description",
-            price: 4,
-            rating: 3.4,
-            isWishlisted: false
-        });
-        this.games.push({
-            id: 3,
-            title: "game4",
-            description: "description",
-            price: 4,
-            rating: 1.2,
-            isWishlisted: true
-        });
-        this.games.push({
-            id: 3,
-            title: "game5",
-            description: "description",
-            price: 4,
-            rating: 4,
-            isWishlisted: true
-        });
-        this.games.push({
-            id: 3,
-            title: "game6",
-            description: "description",
-            price: 4.5,
-            rating: 3,
-            isWishlisted: true
-        });
-
-        this.games.push({
-            id: 3,
-            title: "game7",
-            description: "description",
-            price: 5,
-            rating: 3,
-            isWishlisted: true
-        });
+        
     }
 }

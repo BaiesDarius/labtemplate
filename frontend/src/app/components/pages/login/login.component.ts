@@ -37,7 +37,7 @@ export class LoginComponent {
         this.apiService.post("Login", user).subscribe(result => {
             if (result.success) {
                 Cookie.set("Id", result.id);
-                this.router.navigate(['/logged'], { skipLocationChange: true, queryParams: { showLogIn: true, firstName: result.firstname} });
+                this.router.navigate(['/logged'], { skipLocationChange: true, queryParams: { showLogIn: true, firstName: result.firstname, isAdmin:result.isAdmin} });
             }
             else {
                 this.notificator.onFail('Invalid Creditentials.');

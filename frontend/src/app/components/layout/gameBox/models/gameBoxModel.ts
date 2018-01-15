@@ -5,5 +5,4 @@ export class GameModel {
     public price: number;
     public description: string;
     public rating: number;
-    public isWishlisted: boolean;
 }
