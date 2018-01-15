@@ -28,14 +28,12 @@ var index = require('./src/rest/index');
 var user = require('./src/rest/user');
 var game = require('./src/rest/game');
 var userrole = require('./src/rest/userrole');
-var wishlist = require('./src/rest/wishlist');
 var cart = require('./src/rest/cart');
 app.use('/api', index);
 app.use('/api/user', user);
 app.use('/api/game', game);
 app.use('/api/cart', cart);
 app.use('/api/userrole', userrole);
-app.use('/api/wishlist', wishlist);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
